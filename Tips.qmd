@@ -1,0 +1,13 @@
+---
+title: "Tips"
+---
+
+I archive tips for using Windows, particularly from a Mac user.
+
+# Resource Monitor in Windows (Activity Monitor in Mac)
+
+Search "Resource Monitor".
+
+# Windows Terminal 
+
+First experience is pretty good. I am switching from default terminal emulator of WSL Ubuntu. It can open and switch between multiple command line interfaces. There seems more options for customization. It is also the default console for latest Windows. The default appearance looks better. 

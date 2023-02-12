@@ -1,3 +1,25 @@
+---
+title: "Log on Windows - Alien Machine"
+---
+
+# System information
+
+Hardware
+
+1. Processor: Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz
+1. Installed RAM: 32.0GB
+1. System type: 64-bit operating system, x64-based processor 
+
+Software
+
+1. Edition: Windows 10 Pro
+1. Version: 21H2
+1. Installed on 1/18/2021
+1. OS build: 19044.2486
+1. Experience: Windows Feature Experience Pack 120.2212.4190.0
+
+
+
 # Get started
 
 I created `log.txt` in the `C:>Users\<USER>\Documents\tmp` folder, but will move the log into WSL.

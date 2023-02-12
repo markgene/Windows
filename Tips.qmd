@@ -11,3 +11,11 @@ Search "Resource Monitor".
 # Windows Terminal 
 
 First experience is pretty good. I am switching from default terminal emulator of WSL Ubuntu. It can open and switch between multiple command line interfaces. There seems more options for customization. It is also the default console for latest Windows. The default appearance looks better. 
+
+Resources
+
+1. [Official documents](https://learn.microsoft.com/en-us/windows/terminal/)
+
+# Time zone does not automatically changed
+
+The time zone did not change when I moved to a new time zone and I cannot change it in the settings followed the official document. It was simply disabled for changing. I followed another official document to change the registry. It did not work in the beginning, but after I restarted the computer, the time zone was correctly set. 

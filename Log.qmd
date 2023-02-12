@@ -1,0 +1,133 @@
+# Get started
+
+I created `log.txt` in the `C:>Users\<USER>\Documents\tmp` folder, but will move the log into WSL.
+
+# Install WSL - default Ubuntu
+
+Welcome to Ubuntu 22.04.1 LTS (GNU/Linux 5.15.79.1-microsoft-standard-WSL2 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+This message is shown once a day. To disable it please create the
+/home/mjchen/.hushlogin file.
+
+# Install VS code and use it with WSL
+
+Download VS Code and follow the instruction to install it.
+
+After install "Remote Development" extension, follow the instruction on the page of the extension to start VS code in WSL.
+
+Continue with [WSL tutorials](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode).
+
+# Install Git
+
+```bash
+sudo apt-get install git
+git config --global user.name "Mark J Chen"
+git config --global user.email "mjchen.gene@gmail.com"
+```
+
+::: {.callback tips}
+`git` is pre-installed on Ubuntu.
+:::
+
+# Install Conda
+
+Follow Conda documentation:
+
+```bash
+cd ~
+mkdir Downloads
+cd Downloads
+curl -OL https://repo.anaconda.com/miniconda/Miniconda3-py310_23.1.0-1-Linux-x86_64.sh
+sha256sum Miniconda3-py310_23.1.0-1-Linux-x86_64.sh
+bash Miniconda3-py310_23.1.0-1-Linux-x86_64.sh
+```
+
+Follow the prompts to install Conda. Restart WSL Ubuntu, and Conda is effective.
+
+::: {.callback tips}
+`curl` is pre-installed on Ubuntu.
+:::
+
+# Install software via Conda: env `r42-py310`
+
+```bash
+conda create -c conda-forge -n py310r42 python=3.10 r-base=4.2
+conda activate py310r42
+conda install -c conda-forge mamba
+mamba install -c conda-forge quarto
+```
+
+# Install Quarto
+
+## Cannot install via Conda
+
+```bash
+mamba install -c conda-forge quarto
+mkdir ~/Documents
+cd ~/Documents
+quarto create-project Windows
+```
+
+I get an error message as below
+
+```default
+/home/mjchen/miniconda3/envs/py310r42/bin/quarto: line 128: /home/mjchen/miniconda3/envs/py310r42/bin/tools/deno: No such file or directory
+`
+```
+
+```bash
+mamba remove quarto
+```
+
+## Try to install from `deb` file
+
+First download `deb` file from Quarto website. Then install.
+
+```bash
+cd ~/Downloads/
+curl -OL https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.335/quarto-1.2.335-linux-amd64.deb
+sudo apt install ./quarto-1.2.335-linux-amd64.deb
+```
+
+I get an message below:
+
+```default
+N: Download is performed unsandboxed as root as file '/home/mjchen/Downloads/quarto-1.2.335-linux-amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
+```
+
+Follow the instruction on [Stack Exchange post](https://askubuntu.com/questions/908800/what-does-this-apt-error-message-download-is-performed-unsandboxed-as-root), make sure `_apt` has the write permission to the folders.
+
+```bash
+sudo chown -Rv _apt:root /var/cache/apt/archives/partial/
+sudo chmod -Rv 700 /var/cache/apt/archives/partial/
+```
+
+```bash
+cd ~/Documents
+quarto create-project Windows
+```
+
+Yeah! It works!
+
+# Open Quarto project on WSL in VS code
+
+In WSL Ubuntu:
+
+```bash
+cd ~/Documents
+code Windows
+```
+
+I examine the extensions to see the extensions installed both local and WSL Ubuntu. Thus, it seems works.
+
+Now, I copy the content of this file to `Log.qmd` in the Quarto project `Windows`.
+
+# Config VS code for Quarto
+
+1. Install Quarto extension in VS code
+1. Init Git repo.
+1. Update `_quarto.yml`.

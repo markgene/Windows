@@ -131,3 +131,16 @@ Now, I copy the content of this file to `Log.qmd` in the Quarto project `Windows
 1. Install Quarto extension in VS code
 1. Init Git repo.
 1. Update `_quarto.yml`.
+
+# Create GitHub repo
+
+Open a new Terminal in VS code
+
+```bash
+conda activate py310r42
+git remote add origin https://github.com/markgene/Windows.git
+git branch -M main
+git push -u origin main
+```
+
+Follow the instruction in VS code for GitHub auth.
